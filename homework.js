@@ -164,3 +164,13 @@ var task16 = (+null == false) < 1;
 // 1 < 1 -> false
 // Result: false
 console.log("Task 16: " + task16)
+
+
+// Task 17: false && true || true
+
+var task17 = false && true || true
+// Answer: 
+// false && true -> false (оператор && повертає перше хибне значення)
+// false || true -> true (оператор || повертає перше правдиве значення)
+// Result: true
+console.log("Task 17: " + task17)
