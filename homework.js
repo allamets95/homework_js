@@ -48,3 +48,13 @@ var task5 = '10' - 5 === 6;
 // 5 === 6 -> false (порівняння)
 //Result: false
 console.log("Task 5: " + task5)
+
+
+// Task 6: true + false
+
+var task6 = true + false
+// Answer:
+// true -> 1, false -> 0 (перетворення boolean на число)
+// 1 + 0 -> 1
+// Result: 1
+console.log("Task 6: " + task6)
