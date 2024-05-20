@@ -116,3 +116,13 @@ var task12 = null == ''
 // null == '' -> false (неявне порівняння: null рівний тільки undefined)
 // Result: false
 console.log("Task 12: " + task12)
+
+
+// Task 13: 3 ** (9 / 3);
+
+var task13 = 3 ** (9 / 3);
+// Answer:
+// 9 / 3 -> 3
+// 3 ** 3 -> 27 (піднесення до степеня)
+// Result: 27
+console.log("Task 13: " + task13)
