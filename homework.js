@@ -174,3 +174,13 @@ var task17 = false && true || true
 // false || true -> true (оператор || повертає перше правдиве значення)
 // Result: true
 console.log("Task 17: " + task17)
+
+
+// Task 18: false && (false || true);
+
+var task18 = false && (false || true);
+// Answer:
+// false || true -> true (оператор || повертає перше правдиве значення)
+// false && true -> false (оператор && повертає перше хибне значення)
+// Result: false
+console.log("Task 18: " + task18)
