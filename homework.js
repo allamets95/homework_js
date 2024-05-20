@@ -126,3 +126,16 @@ var task13 = 3 ** (9 / 3);
 // 3 ** 3 -> 27 (піднесення до степеня)
 // Result: 27
 console.log("Task 13: " + task13)
+
+
+// Task 14: !!'false' == !!'true'
+
+var task14 = !!'false' == !!'true'
+// Answer:
+// 'false' є правдивим значенням
+// !!'false' -> true (подвійне заперечення)
+// 'true' є правдивим значенням
+// !!'true' -> true (подвійне заперечення)
+// true == true -> true
+// Result: true
+console.log("Task 14: " + task14)
