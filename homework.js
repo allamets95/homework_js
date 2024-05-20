@@ -58,3 +58,12 @@ var task6 = true + false
 // 1 + 0 -> 1
 // Result: 1
 console.log("Task 6: " + task6)
+
+
+// Task 7: '4px' - 3
+
+var task7 = '4px' - 3
+// '4px' не можна перетворити на число
+// '4px' - 3 -> NaN (Not a Number)
+// Result: NaN
+console.log("Task 7: " + task7)
