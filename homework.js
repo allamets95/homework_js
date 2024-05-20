@@ -151,3 +151,16 @@ var task15 = 0 || '0' && 1
 // 0 || 1 -> 1 (оператор || повертає перше правдиве значення)
 // Result: 1
 console.log("Task 15: " + task15)
+
+
+// Task 16: (+null == false) < 1;
+
+var task16 = (+null == false) < 1;
+// Answer:
+// null -> 0 (унарний плюс)
+// +null -> 0
+// 0 == false -> true (перетворення boolean на число)
+// true -> 1 (перетворення boolean на число)
+// 1 < 1 -> false
+// Result: false
+console.log("Task 16: " + task16)
