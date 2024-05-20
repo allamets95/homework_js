@@ -96,3 +96,14 @@ var task10 = 12 / '6'
 // 12 / 6 -> 2
 // Result: 2
 console.log("Task 10: " + task10)
+
+
+// Task 11: '10' + (5 === 6);
+
+var task11 = '10' + (5 === 6);
+// Answer:
+// 5 === 6 -> false
+// false -> 0 (перетворення boolean на число)
+// '10' + 0 -> '100' (перетворення числа 0 на рядок і конкатенація)
+// Result: '100'
+console.log("Task 11: " + task11)
