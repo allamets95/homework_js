@@ -67,3 +67,13 @@ var task7 = '4px' - 3
 // '4px' - 3 -> NaN (Not a Number)
 // Result: NaN
 console.log("Task 7: " + task7)
+
+
+// Task 8: '4' - 3
+
+var task8 = '4' - 3
+// Answer:
+// '4' -> 4 (перетворення рядка на число)
+// 4 - 3 -> 1
+// Result: 1
+console.log("Task 8: " + task8)
