@@ -184,3 +184,17 @@ var task18 = false && (false || true);
 // false && true -> false (оператор && повертає перше хибне значення)
 // Result: false
 console.log("Task 18: " + task18)
+
+
+// Task 19: (+null == false) < 1 ** 5;
+
+var task19 = (+null == false) < 1 ** 5;
+// Answer:
+// null -> 0 (унарний плюс)
+// +null -> 0
+// 0 == false -> true (перетворення boolean на число)
+// true -> 1 (перетворення boolean на число)
+// 1 ** 5 -> 1 (піднесення до степеня)
+// 1 < 1 -> false
+// Result: false
+console.log("Task 19: " + task19)
