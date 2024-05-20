@@ -38,3 +38,13 @@ var task4 = +'40' + +'2' + "hillel";
 // 42 + "hillel" -> '42hillel' (перетворення числа 42 на рядок і конкатенація)
 // Result: '42hillel'
 console.log("Task 4: " + task4)
+
+
+// Task 5: '10' - 5 === 6;
+
+var task5 = '10' - 5 === 6;
+// Answer:
+// '10' - 5 -> 5 (перетворення рядка '10' на число 10 та віднімання)
+// 5 === 6 -> false (порівняння)
+//Result: false
+console.log("Task 5: " + task5)
