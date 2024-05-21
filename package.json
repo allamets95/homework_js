@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/allamets95/homework_js/issues"
   },
-  "homepage": "https://github.com/allamets95/homework_js#readme"
+  "homepage": "https://github.com/allamets95/homework_js#readme",
+  "dependencies": {
+    "prompt": "^1.3.0"
+  }
 }
