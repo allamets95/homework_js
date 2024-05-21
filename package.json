@@ -1,0 +1,19 @@
+{
+  "name": "homework_js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "homework_using_isNaN.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allamets95/homework_js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/allamets95/homework_js/issues"
+  },
+  "homepage": "https://github.com/allamets95/homework_js#readme"
+}
