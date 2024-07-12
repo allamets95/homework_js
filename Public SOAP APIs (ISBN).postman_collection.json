@@ -1,0 +1,265 @@
+{
+	"info": {
+		"_postman_id": "05358439-ed4e-4b45-bced-d3e4b2fb4fab",
+		"name": "Public SOAP APIs (ISBN)",
+		"description": "This is a collection of different SOAP APIs that are completley public and do not require any authentication, making it easier for consumers to play with and understand what APIs are all about by seeing the many different ways in which APIs can be used.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27766544"
+	},
+	"item": [
+		{
+			"name": "Book ISBN Numbers",
+			"item": [
+				{
+					"name": "Is Valid ISBN13 Number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Перевірка, що відповідь містить елемент IsValidISBN13Response",
+									"pm.test(\"Відповідь містить елемент IsValidISBN13Response\", function () {",
+									"    pm.expect(pm.response.text()).to.include('<m:IsValidISBN13Response');",
+									"});",
+									"",
+									"// Перевірка, що відповідь містить елемент IsValidISBN13Result зі значенням true",
+									"pm.test(\"Елемент IsValidISBN13Result містить значення true\", function () {",
+									"    pm.expect(pm.response.text()).to.include('<m:IsValidISBN13Result>true</m:IsValidISBN13Result>');",
+									"});",
+									"",
+									"// Перевірка наявності заголовка Content-Type і його значення",
+									"pm.test(\"Заголовок Content-Type присутній та має значення text/xml; charset=utf-8\", function () {",
+									"    pm.expect(pm.response.headers.get('Content-Type')).to.equal('text/xml; charset=utf-8');",
+									"});",
+									"",
+									"// Перевірка наявності заголовка Content-Encoding і його значення",
+									"pm.test(\"Заголовок Content-Encoding присутній та має значення gzip\", function () {",
+									"    pm.expect(pm.response.headers.get('Content-Encoding')).to.include('gzip');",
+									"});",
+									"",
+									"// Перевірка наявності і валідного формату заголовка Date",
+									"pm.test(\"Заголовок Date присутній та має валідний формат\", function () {",
+									"    pm.expect(pm.response.headers.get('Date')).to.exist;",
+									"    pm.expect(pm.response.headers.get('Date')).to.match(/^\\w{3}, \\d{2} \\w{3} \\d{4} \\d{2}:\\d{2}:\\d{2} GMT$/);",
+									"});",
+									"",
+									"// Перевірка наявності заголовка Server",
+									"pm.test(\"Заголовок Server присутній\", function () {",
+									"    pm.response.to.have.header('Server');",
+									"});",
+									"",
+									"// Перевірка наявності заголовка Cache-Control",
+									"pm.test(\"Заголовок Cache-Control присутній\", function () {",
+									"    pm.response.to.have.header('Cache-Control');",
+									"});",
+									"",
+									"// Перевірка наявності заголовка Web-Service і його значення",
+									"pm.test(\"Заголовок Web-Service присутній та має значення DataFlex 18.2\", function () {",
+									"    pm.expect(pm.response.headers.get('Web-Service')).to.equal('DataFlex 18.2');",
+									"});",
+									"",
+									"// Перевірка наявності заголовка Strict-Transport-Security",
+									"pm.test(\"Заголовок Strict-Transport-Security присутній\", function () {",
+									"    pm.response.to.have.header('Strict-Transport-Security');",
+									"});",
+									"",
+									"// Перевірка наявності заголовка Permissions-Policy і його значення",
+									"pm.test(\"Заголовок Permissions-Policy присутній та має значення interest-cohort=()\", function () {",
+									"    pm.expect(pm.response.headers.get('Permissions-Policy')).to.equal('interest-cohort=()');",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"book_number_13\", \"978-1-4612-9090-2\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml; charset=utf-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <soap:Body>\n        <IsValidISBN13 xmlns=\"http://webservices.daehosting.com/ISBN\">\n            <sISBN>{{book_number_13}}</sISBN>\n        </IsValidISBN13>\n    </soap:Body>\n</soap:Envelope>"
+						},
+						"url": {
+							"raw": "http://webservices.daehosting.com/services/isbnservice.wso",
+							"protocol": "http",
+							"host": [
+								"webservices",
+								"daehosting",
+								"com"
+							],
+							"path": [
+								"services",
+								"isbnservice.wso"
+							]
+						},
+						"description": "The test is done by calculation on the first 12 digits and compare the result with the checksum number at the end. You have to pass a 13 digits number."
+					},
+					"response": []
+				},
+				{
+					"name": "Is Valid ISBN10 Number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Перевірка коду стану 200 OK",
+									"pm.test(\"Статус код 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"// Перевірка типу вмісту, який повинен бути XML",
+									"pm.test(\"Тип вмісту - XML\", function () {",
+									"    pm.expect(pm.response.headers.get('Content-Type')).to.include('text/xml');",
+									"});",
+									"",
+									"// Перевірка наявності SOAP Envelope",
+									"pm.test(\"SOAP Envelope присутній\", function () {",
+									"    pm.expect(pm.response.text()).to.include('<soap:Envelope');",
+									"});",
+									"",
+									"// Перевірка наявності SOAP Body",
+									"pm.test(\"SOAP Body присутній\", function () {",
+									"    pm.expect(pm.response.text()).to.include('<soap:Body');",
+									"});",
+									"",
+									"// Перевірка наявності елемента IsValidISBN10Response",
+									"pm.test(\"Елемент IsValidISBN10Response присутній\", function () {",
+									"    pm.expect(pm.response.text()).to.include('<m:IsValidISBN10Response');",
+									"});",
+									"",
+									"// Перевірка, що елемент IsValidISBN10Result містить значення true",
+									"pm.test(\"Елемент IsValidISBN10Result містить true\", function () {",
+									"    pm.expect(pm.response.text()).to.include('<m:IsValidISBN10Result>true</m:IsValidISBN10Result>');",
+									"});",
+									"",
+									"// Перевірка заголовка Cache-Control",
+									"pm.test(\"Заголовок Cache-Control присутній\", function () {",
+									"    pm.response.to.have.header('Cache-Control');",
+									"});",
+									"",
+									"// Перевірка, що заголовок Content-Encoding містить gzip",
+									"pm.test(\"Заголовок Content-Encoding містить gzip\", function () {",
+									"    pm.response.to.have.header('Content-Encoding');",
+									"    pm.expect(pm.response.headers.get('Content-Encoding')).to.include('gzip');",
+									"});",
+									"",
+									"// Перевірка наявності заголовка Server",
+									"pm.test(\"Заголовок Server присутній\", function () {",
+									"    pm.response.to.have.header('Server');",
+									"});",
+									"",
+									"// Перевірка заголовка Date на наявність і валідний формат дати",
+									"pm.test(\"Заголовок Date присутній та має валідний формат\", function () {",
+									"    pm.expect(pm.response.headers.get('Date')).to.exist;",
+									"    pm.expect(pm.response.headers.get('Date')).to.match(/^\\w{3}, \\d{2} \\w{3} \\d{4} \\d{2}:\\d{2}:\\d{2} GMT$/);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"book_number_10\", \"0-19-852663-6\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml; charset=utf-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <soap:Body>\n        <IsValidISBN10 xmlns=\"http://webservices.daehosting.com/ISBN\">\n            <sISBN>{{book_number_10}}</sISBN>\n        </IsValidISBN10>\n    </soap:Body>\n</soap:Envelope>"
+						},
+						"url": {
+							"raw": "http://webservices.daehosting.com/services/isbnservice.wso",
+							"protocol": "http",
+							"host": [
+								"webservices",
+								"daehosting",
+								"com"
+							],
+							"path": [
+								"services",
+								"isbnservice.wso"
+							]
+						},
+						"description": "The test is done by calculation on the first 9 digits and compare the result with the checksum number at the end. You have to pass a 10 digits number or 8 digits and an X."
+					},
+					"response": []
+				}
+			],
+			"description": "SOAP APIs for book ISBN numbers.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
